@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funger Player Info Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+
+        <div class="stat-section">
+            <h2>Hunger</h2>
+
+            <div class="slider-row">
+                <span>0</span>
+
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="85"
+                    id="hungerSlider">
+
+                <span>100</span>
+
+                <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    value="85"
+                    id="hungerValue">
+            </div>
+        </div>
+
+        <div class="stat-section">
+            <h2>Sanity</h2>
+
+            <div class="slider-row">
+                <span>0</span>
+
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="47"
+                    id="sanitySlider">
+
+                <span>100</span>
+
+                <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    value="47"
+                    id="sanityValue">
+            </div>
+        </div>
+
+        <div class="notes-section">
+            <h2>Notes</h2>
+
+            <textarea placeholder="Write anything you'd like here!"></textarea>
+        </div>
+
+    </div>
+
+    <!-- CENTER PANEL -->
+    <div class="center-panel">
+
+        <h1>FUNGER</h1>
+
+        <div class="character-area">
+
+            <!-- Character Placeholder -->
+            <div class="character-placeholder">
+                <img src="images/Human_Anatomy.jpg" class="character-image">
+
+                <!-- Left Arm -->
+                <div class="limb-slot left-arm-1" data-limb="leftArmSever">
+                    <img src="images/Critical_state_status.png">
+                </div>
+                
+                <div class="limb-slot left-arm-2" data-limb="leftArmFracture">
+                    <img src="images/Fracture_status.png">
+                </div>
+
+                <!-- Right Arm -->
+                <div class="limb-slot right-arm-1" data-limb="rightArmSever">
+                    <img src="images/Critical_state_status.png">
+                </div>
+                <div class="limb-slot right-arm-2" data-limb="rightArmFracture">
+                    <img src="images/Fracture_status.png">
+                </div>
+
+                <!-- Left Leg -->
+                <div class="limb-slot left-leg-1" data-limb="leftLegSever">
+                    <img src="images/Critical_state_status.png">
+                </div>
+                <div class="limb-slot left-leg-2" data-limb="leftLegFracture">
+                    <img src="images/Fracture_status.png">
+                </div>
+
+                <!-- Right Leg -->
+                <div class="limb-slot right-leg-1" data-limb="rightLegSever">
+                    <img src="images/Critical_state_status.png">
+                </div>
+                <div class="limb-slot right-leg-2" data-limb="rightLegFracture">
+                    <img src="images/Fracture_status.png">
+                </div>
+            </div>
+
+            
+
+            <div class="limb-label">
+                Limbs
+                <button class="info-btn"
+                        data-title="Limb Dismemberment & Bone Fracturing - "
+                        data-text="To save against a limb dismemberment or bone fracturing attack, the player must roll a:
+                                    D20 + Armor modifier + Dex modifier
+
+                                    Armor Modifiers:
+                                    Light Armor = +0
+                                    Medium Armor = +2
+                                    Heavy Armor = +4
+
+                                    DC they must pass will be:
+                                    10 + weapon damage / 2   (Max DC of 18)
+
+                                    If a limb is dismembered, apply the bleeding debuff.
+                                    If a limb is dismembered or fractured, it can no longer be used. 
+                                    
+                                    If 1 arm is afflicted, the player can no longer apply their modifiers to any attack rolls that use a two-handed weapon, or any STR or DEX checks/saves that require both hands.
+                                    If 2 arms are afflicted, the player can no longer wield weapons, and will automatically fail strength or dex checks/saves that require arms.
+                                    
+                                    If 1 leg is afflicted, the player’s movement is halved, and they can no longer apply their modifiers to STR or DEX checks/saves that require legs. 
+                                    If 2 legs are afflicted, the player’s movement is reduced to 5 ft, and they must crawl forward to move. They will automatically fail STR or DEX checks/saves that require the usage of legs.
+
+                                    Bone fractures can be healed. Only one fracture can be cured per heal, unless the heal restores over 50% of the player's health. Short and Long rest heals do not count for this.
+                                    Limb dismemberment can only be cured through the limited means available throughout the campaign.
+                                    ">
+                    ℹ
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+        <h2>Conditions</h2>
+
+        <!-- Hunger -->
+        <div class="condition-group">
+            <div class="condition-title">
+                <img src="images/Hunger_LVL_1_status.png">
+                Hunger
+                <button class="info-btn"
+                        data-title="Hunger"
+                        data-text="Inflicted when reaching certain hunger thresholds. 
+
+                                    Hunger 1 (31-50) | -2 to initiative, ability checks, and saves. 
+
+                                    Hunger 2 (21-30) |	-2 to initiative. All ability checks, saves, and attack rolls lose their positive 
+                                    modifiers.
+
+                                    Hunger 3 (11-20) | Legs give out, reducing movement to 5ft. -2 to initiative. All ability checks, 
+                                    saves, and attack rolls lose their positive modifiers.
+
+                                    Hunger 4 (1-10) | 	Vision becomes blurry, giving the blinded conditions. Legs give out, 
+                                    reducing movement to 5ft. -2 to initiative. All ability checks, saves, and attack rolls lose their positive modifiers.
+
+                                    Hunger 5 (0) | Player starves to death. 
+                                    ">
+                    ℹ
+                </button>
+            </div>
+
+            <div class="box-row">
+                <div class="condition-box"
+                    data-condition="hunger1">
+                    1
+                </div>
+
+                <div class="condition-box"
+                    data-condition="hunger2">
+                    2
+                </div>
+
+                <div class="condition-box"
+                    data-condition="hunger3">
+                    3
+                </div>
+
+                <div class="condition-box"
+                    data-condition="hunger4">
+                    4
+                </div>
+
+                <div class="condition-box"
+                    data-condition="hunger5">
+                    5
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Bleed -->
+        <div class="condition-group">
+            <div class="condition-title">
+                <img src="images/Bleeding_status.png">
+                Bleed
+                <button class="info-btn"
+                        data-title="Bleeding"
+                        data-text="Has up to 4 levels, which increase when taking another bleed proc. 
+                                    Any creature with bleed will take slash damage equal to their bleed level when their turn starts. 
+                                    For example, bleeding level 2 will cause 2 slash damage at the start of the turn. 
+                                    Outside of combat, a creature will take the bleed slash damage every now and then.
+
+                                    It can be cured by using a Cloth Fragment item or by cauterizing the wound with heat, 1d4 fire damage.
+                                    ">
+                    ℹ
+                </button>
+            </div>
+
+            <div class="box-row">
+                <div class="condition-box"
+                    data-condition="bleed1">
+                    1
+                </div>
+
+                <div class="condition-box"
+                    data-condition="bleed2">
+                    2
+                </div>
+
+                <div class="condition-box"
+                    data-condition="bleed3">
+                    3
+                </div>
+
+                <div class="condition-box"
+                    data-condition="bleed4">
+                    4
+                </div>
+            </div>
+        </div>
+
+        <!-- Infection -->
+        <div class="condition-group">
+            <div class="condition-title">
+                <img src="images/Infection_arm_status.png">
+                <img src="images/Infection_leg_status.png">
+                Infection
+                <button class="info-btn"
+                        data-title="Infection"
+                        data-text="Roll a d20. For general attacks, if not specified, 1-3 (arm infection), 4-6 (leg infection), 7-9 (arm infection), 10-12 (leg infection), 13+ (no repercussions.)
+                                    If targeting arms specifically, 1-12 (arm infection), 13+ (no repercussions).
+                                    If targeting legs specifically, 1-12 (leg infection), 13+ (no repercussions).
+
+
+                                    Infection will be stated, and progress fast through the body because of the dungeon's effects. 
+                                    Stage effects will stack, and work just like exhaustion (so maybe you can apply exhaustion on DND beyond to help)
+                                    
+                                    Stage 0	| Infection just acquired
+                                    Stage 1 | Disadvantage on ability checks (pale skin)
+                                    Stage 2	| Speed halved (difficulty breathing)
+                                    Stage 3	| Disadvantage on attack rolls and saving throws (Mild fever)
+                                    Stage 4	| Hit point maximum halved
+                                    Stage 5	| Speed reduced to 0
+                                    Stage 6	| Death
+
+                                    Stages will progress when:
+                                    1 stage every few rooms OR around every 5 minutes
+                                    1 stage every short rest
+                                    2 stages every long rest
+
+                                    Can be cured using a green herb, or a mix of green and red. Can also be cured by cutting off the affected limb.
+                                    ">
+                    ℹ
+                </button>
+            </div>
+
+            <div class="box-row">
+                <div class="condition-box"
+                    data-condition="infection0">
+                    0
+                </div>
+
+                <div class="condition-box"
+                    data-condition="infection1">
+                    1
+                </div>
+
+                <div class="condition-box"
+                    data-condition="infection2">
+                    2
+                </div>
+
+                <div class="condition-box"
+                    data-condition="infection3">
+                    3
+                </div>
+
+                <div class="condition-box"
+                    data-condition="infection4">
+                    4
+                </div>
+
+                <div class="condition-box"
+                    data-condition="infection5">
+                    5
+                </div>
+
+                <div class="condition-box"
+                    data-condition="infection6">
+                    6
+                </div>
+            </div>
+        </div>
+
+        <!-- Binary Conditions -->
+        <div class="binary-grid">
+
+            <div>
+                <div class="condition-title">
+                    <img src="images/Poisoned_status.png">
+                    Poisoned
+                    <button class="info-btn"
+                            data-title="Poisoned"
+                            data-text="Same as normal DND rules.
+
+                                        Must roll a d20 + medicine modifier. 
+                                        If it's a general attack, 1-9 (poison), 10+ (no repercussions).
+
+                                        A poisoned creature has disadvantage on attack rolls and ability checks.
+
+                                        Can be cured by using a white vial, or a mix of green and red.
+                                        ">
+                        ℹ
+                    </button>
+                </div>
+
+                <div class="condition-box large-box"
+                    data-condition="poisoned">
+                </div>
+            </div>
+
+            <div>
+                <div class="condition-title">
+                    <img src="images/Toxic_status.png">
+                    Toxic
+                    <button class="info-btn"
+                            data-title="Toxic"
+                            data-text="Must roll a d20 + medicine modifier. 
+                                        If it's a general attack, 1-9 (toxic), 10+ (no repercussions).
+
+                                        Any creature afflicted by toxic will take 1d8 poison damage at the end of their turn.
+                                        Outside of combat, a creature will take 1d8 poison  damage every now and then, and have horrible coughing fits.
+                                        Can be cured by using a white vial, or a mix of green and red.
+                                        ">
+                        ℹ
+                    </button>
+                </div>
+
+                <div class="condition-box large-box"
+                    data-condition="toxic">
+                </div>
+            </div>
+
+            <div>
+                <div class="condition-title">
+                    <img src="images/Blindness_status.png">
+                    Blinded
+                    <button class="info-btn"
+                            data-title="Blinded"
+                            data-text="If from an attack and not a pre-existing DND spell, roll a d20. 
+                                        If 1-15 (blindness), 16-20, no repercussions.
+
+                                        Same as normal DND rules, with one added feature.
+                                        1) A blinded creature can’t see and automatically fails any ability check that requires sight.
+
+                                        2) Attack rolls against the creature have advantage, and the creature’s attack rolls have disadvantage.
+                                        
+                                        3) (If the eyes are physically destroyed, not just a spell) The creature can not navigate its surroundings properly. If they are not aided by another creature, they will be unable to walk around efficiently, and can not notice any enemies or dangers unless a different sense alerts them.
+
+                                        If the blindness is caused by a spell, vision can be restored through normal DND means, like ending the spell. If the eyes are destroyed, they can only be cured through special and limited means of restoring body parts found in the campaign. This condition can be prevented through wearing special face armor to prevent injury to the eyes.  
+                                        ">
+                        ℹ
+                    </button>
+                </div>
+
+                <div class="condition-box large-box"
+                    data-condition="blinded">
+                </div>
+            </div>
+
+            <div>
+                <div class="condition-title">
+                    <img src="images/Parasites_status.png">
+                    Parasites
+                    <button class="info-btn"
+                            data-title="Parasites"
+                            data-text="Increased hunger drain by x2.
+                                       Can be cured using worm juice.
+                                        ">
+                        ℹ
+                    </button>
+                </div>
+
+                <div class="condition-box large-box"
+                    data-condition="parasites">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Popup -->
+
+<div id="popup" class="popup hidden">
+
+    <div class="popup-content">
+        <button id="closePopup">✕</button>
+
+        <h3 id="popupTitle"></h3>
+
+        <p id="popupText"></p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
