@@ -36,6 +36,8 @@ function saveData() {
 
         notes: document.querySelector("textarea").value,
 
+        heroicInspirations: heroicBox.value,
+
         conditions: conditions,
 
         limbs: limbs
@@ -83,6 +85,14 @@ function loadData() {
 
         document.querySelector("textarea").value =
             data.notes;
+    }
+
+    // Heroic Inspirations
+
+    if (data.heroicInspirations !== undefined) {
+
+        heroicBox.value = data.heroicInspirations;
+
     }
 
     // Conditions
@@ -173,6 +183,17 @@ if (notesBox) {
 
     });
 }
+
+
+// ======================================
+// HEROIC INSPIRATIONS
+// ======================================
+
+const heroicBox = document.getElementById("heroicInspiration");
+
+heroicBox.addEventListener("input", () => {
+    saveData();
+});
 
 
 // ======================================
