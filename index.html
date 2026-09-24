@@ -14,18 +14,22 @@
 
         <div class="stat-section">
             <h2>Hunger</h2>
-
             <div class="slider-row">
-                <span>0</span>
+                <div class="hunger-slider-wrapper">
 
-                <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value="85"
-                    id="hungerSlider">
+                    <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="85"
+                        id="hungerSlider">
 
-                <span>100</span>
+                    <div class="hunger-marker marker-50"></div>
+                    <div class="hunger-marker marker-30"></div>
+                    <div class="hunger-marker marker-20"></div>
+                    <div class="hunger-marker marker-10"></div>
+
+                </div>
 
                 <input
                     type="number"
@@ -34,22 +38,21 @@
                     value="85"
                     id="hungerValue">
             </div>
-        </div>
-
-        <div class="stat-section">
+            
             <h2>Sanity</h2>
 
             <div class="slider-row">
-                <span>0</span>
 
-                <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value="47"
-                    id="sanitySlider">
+                <div class="sanity-slider-wrapper">
 
-                <span>100</span>
+                    <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="47"
+                        id="sanitySlider">
+
+                </div>
 
                 <input
                     type="number"
@@ -57,7 +60,20 @@
                     max="100"
                     value="47"
                     id="sanityValue">
+
+                <div class="max-value">
+                    <span>Max</span>
+                    <input
+                        type="number"
+                        id="sanityMax"
+                        min="1"
+                        max="1000"
+                        value="100"
+                    >
+                </div>
+
             </div>
+
         </div>
 
         <div class="notes-section">
@@ -162,10 +178,13 @@
                                     DC they must pass will be:
                                     10 + weapon damage / 2   (Max DC of 18)
 
+                                    If a limb dismemberment succeeds and you are wielding a shield, you can sacrifice and break the shield to nullify the limb dismemberment and keep the limb.
+
                                     If a limb is dismembered, apply the bleeding debuff.
-                                    If a limb is dismembered or fractured, it can no longer be used. 
+                                    If a limb is dismembered or fractured, it can no longer be used. Do not apply the bleeding debuff.
                                     
-                                    If 1 arm is afflicted, the player can no longer apply their modifiers to any attack rolls that use a two-handed weapon, or any STR or DEX checks/saves that require both hands.
+                                    If 1 arm is afflicted, the player can no longer apply their positive modifiers to any attack rolls that use a two-handed weapon, or any STR or DEX checks/saves that require both hands. 
+                                    You will use a +0, or your current modifier if it is already negative.
                                     If 2 arms are afflicted, the player can no longer wield weapons, and will automatically fail strength or dex checks/saves that require arms.
                                     
                                     If 1 leg is afflicted, the player’s movement is halved, and they can no longer apply their modifiers to STR or DEX checks/saves that require legs. 
@@ -287,10 +306,9 @@
         <div class="condition-group">
             <div class="condition-title">
                 <img src="images/Infection_arm_status.png">
-                <img src="images/Infection_leg_status.png">
-                Infection
+                Arm Infection
                 <button class="info-btn"
-                        data-title="Infection"
+                        data-title="Arm Infection"
                         data-text="Roll a d20. For general attacks, if not specified, 1-3 (arm infection), 4-6 (leg infection), 7-9 (arm infection), 10-12 (leg infection), 13+ (no repercussions.)
                                     If targeting arms specifically, 1-12 (arm infection), 13+ (no repercussions).
                                     If targeting legs specifically, 1-12 (leg infection), 13+ (no repercussions).
@@ -298,6 +316,8 @@
 
                                     Infection will be stated, and progress fast through the body because of the dungeon's effects. 
                                     Stage effects will stack, and work just like exhaustion (so maybe you can apply exhaustion on DND beyond to help)
+                                    However, the infection effects of arm or leg infections do not stack. Whichever one has the highest infection level, use only
+                                    the debuffs from that. 
                                     
                                     Stage 0	| Infection just acquired
                                     Stage 1 | Disadvantage on ability checks (pale skin)
@@ -308,7 +328,7 @@
                                     Stage 6	| Death
 
                                     Stages will progress when:
-                                    1 stage every few rooms OR around every 5 minutes
+                                    1 stage every few rooms OR around every 30 minutes time wise
                                     1 stage every short rest
                                     2 stages every long rest
 
@@ -320,41 +340,115 @@
 
             <div class="box-row">
                 <div class="condition-box"
-                    data-condition="infection0">
+                    data-condition="armInfection0">
                     0
                 </div>
 
                 <div class="condition-box"
-                    data-condition="infection1">
+                    data-condition="armInfection1">
                     1
                 </div>
 
                 <div class="condition-box"
-                    data-condition="infection2">
+                    data-condition="armInfection2">
                     2
                 </div>
 
                 <div class="condition-box"
-                    data-condition="infection3">
+                    data-condition="armInfection3">
                     3
                 </div>
 
                 <div class="condition-box"
-                    data-condition="infection4">
+                    data-condition="armInfection4">
                     4
                 </div>
 
                 <div class="condition-box"
-                    data-condition="infection5">
+                    data-condition="armInfection5">
                     5
                 </div>
 
                 <div class="condition-box"
-                    data-condition="infection6">
+                    data-condition="armInfection6">
                     6
                 </div>
             </div>
         </div>
+
+        <div class="condition-group">
+            <div class="condition-title">
+                <img src="images/Infection_leg_status.png">
+                Leg Infection
+                <button class="info-btn"
+                        data-title="Leg Infection"
+                        data-text="Roll a d20. For general attacks, if not specified, 1-3 (arm infection), 4-6 (leg infection), 7-9 (arm infection), 10-12 (leg infection), 13+ (no repercussions.)
+                                    If targeting arms specifically, 1-12 (arm infection), 13+ (no repercussions).
+                                    If targeting legs specifically, 1-12 (leg infection), 13+ (no repercussions).
+
+
+                                    Infection will be stated, and progress fast through the body because of the dungeon's effects. 
+                                    Stage effects will stack, and work just like exhaustion (so maybe you can apply exhaustion on DND beyond to help)
+                                    However, the infection effects of arm or leg infections do not stack. Whichever one has the highest infection level, use only
+                                    the debuffs from that. 
+                                    
+                                    Stage 0	| Infection just acquired
+                                    Stage 1 | Disadvantage on ability checks (pale skin)
+                                    Stage 2	| Speed halved (difficulty breathing)
+                                    Stage 3	| Disadvantage on attack rolls and saving throws (Mild fever)
+                                    Stage 4	| Hit point maximum halved
+                                    Stage 5	| Speed reduced to 0
+                                    Stage 6	| Death
+
+                                    Stages will progress when:
+                                    1 stage every few rooms OR around every 30 minutes time wise
+                                    1 stage every short rest
+                                    2 stages every long rest
+
+                                    Can be cured using a green herb, or a mix of green and red. Can also be cured by cutting off the affected limb.
+                                    ">
+                    ℹ
+                </button>
+            </div>
+
+            <div class="box-row">
+                <div class="condition-box"
+                    data-condition="legInfection0">
+                    0
+                </div>
+
+                <div class="condition-box"
+                    data-condition="legInfection1">
+                    1
+                </div>
+
+                <div class="condition-box"
+                    data-condition="legInfection2">
+                    2
+                </div>
+
+                <div class="condition-box"
+                    data-condition="legInfection3">
+                    3
+                </div>
+
+                <div class="condition-box"
+                    data-condition="legInfection4">
+                    4
+                </div>
+
+                <div class="condition-box"
+                    data-condition="legInfection5">
+                    5
+                </div>
+
+                <div class="condition-box"
+                    data-condition="legInfection6">
+                    6
+                </div>
+            </div>
+        </div>
+
 
         <!-- Binary Conditions -->
         <div class="binary-grid">
@@ -447,6 +541,29 @@
 
                 <div class="condition-box large-box"
                     data-condition="parasites">
+                </div>
+            </div>
+
+            <div>
+                <div class="condition-title">
+                    <img src="images/Ore_Glutton_status.png">
+                    Ore Gluttons
+                    <button class="info-btn"
+                            data-title="Ore Gluttons"
+                            data-text="Any creature afflicted has its body invaded by Ore Gluttons insects.
+                                       Afflicted individuals are normally those without organic flesh, or those in heavy metal gear With their large teeth, the Ore Gluttons will eat through heavy armor and harder fabrics, roaming around on or beneath the skin of the individual. As they do so, they constantly secrete a gooey substance that soaks into their victim's body, which messes with their senses.
+                                    
+                                       Effects:
+                                       1) Disadvantage on Perception rolls
+                                       2) Any creature that is a species of harder material and not organic flesh will not benifit from any reparis to their body.
+                                       3) If the creature wears heavy armor, their speed is reduced by 10, and they have disavantage on Dex ability checks and saving throws.
+                                        ">
+                        ℹ
+                    </button>
+                </div>
+
+                <div class="condition-box large-box"
+                    data-condition="oreGluttons">
                 </div>
             </div>
 

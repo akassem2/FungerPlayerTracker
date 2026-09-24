@@ -60,6 +60,68 @@ body {
     width: 60px;
 }
 
+/* Hunger Slider */
+
+.hunger-slider-wrapper,
+.sanity-slider-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+}
+
+.hunger-slider-wrapper input[type="range"],
+.sanity-slider-wrapper input[type="range"] {
+    width: 100%;
+}
+
+.hunger-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 14px;
+    background-color: #f5f5f5;
+    pointer-events: none;
+}
+
+/* Hunger thresholds */
+
+.marker-50 {
+    left: 50%;
+}
+
+.marker-30 {
+    left: 31.125%;
+}
+
+.marker-20 {
+    left: 22%;
+}
+
+.marker-10 {
+    left: 12.5%;
+}
+
+.max-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 0 0 1rem 0;
+}
+
+.max-value span {
+    font-size: 12px;
+    color: #f5f5f5;
+}
+
+#sanityMax {
+    width: 55px;
+}
+
 .notes-section {
     margin-top: 40px;
 }

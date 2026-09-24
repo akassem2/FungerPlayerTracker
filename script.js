@@ -34,6 +34,8 @@ function saveData() {
 
         sanity: document.getElementById("sanityValue").value,
 
+        sanityMax: document.getElementById("sanityMax").value,
+
         notes: document.querySelector("textarea").value,
 
         heroicInspirations: heroicBox.value,
@@ -77,6 +79,17 @@ function loadData() {
 
         document.getElementById("sanitySlider").value =
             data.sanity;
+    }
+
+    // Sanity Max
+
+    if (data.sanityMax !== undefined) {
+
+        document.getElementById("sanityMax").value =
+            data.sanityMax;
+
+        document.getElementById("sanitySlider").max =
+            data.sanityMax;
     }
 
     // Notes
@@ -138,11 +151,15 @@ function loadData() {
 // SLIDER SYNCING
 // ======================================
 
-function linkSlider(sliderId, numberId) {
+function linkSlider(sliderId, numberId, maxId = null) {
 
     const slider = document.getElementById(sliderId);
     const number = document.getElementById(numberId);
+    const maxInput = maxId
+        ? document.getElementById(maxId)
+        : null;
 
+    // Current value changed with slider
     slider.addEventListener("input", () => {
 
         number.value = slider.value;
@@ -150,24 +167,57 @@ function linkSlider(sliderId, numberId) {
         saveData();
     });
 
+    // Current value changed with number box
     number.addEventListener("input", () => {
 
         let value = parseInt(number.value);
+        let max = maxInput
+            ? parseInt(maxInput.value)
+            : 100;
 
         if (isNaN(value)) value = 0;
 
         if (value < 0) value = 0;
-        if (value > 100) value = 100;
+        if (value > max) value = max;
 
         number.value = value;
         slider.value = value;
 
         saveData();
     });
+
+    // Maximum value changed
+    if (maxInput) {
+
+        maxInput.addEventListener("input", () => {
+
+            let max = parseInt(maxInput.value);
+
+            if (isNaN(max) || max < 1) {
+                max = 1;
+            }
+
+            maxInput.value = max;
+
+            // Change slider maximum
+            slider.max = max;
+
+            // Make sure current value isn't above new maximum
+            let value = parseInt(number.value);
+
+            if (value > max) {
+                value = max;
+                number.value = value;
+                slider.value = value;
+            }
+
+            saveData();
+        });
+    }
 }
 
 linkSlider("hungerSlider", "hungerValue");
-linkSlider("sanitySlider", "sanityValue");
+linkSlider("sanitySlider", "sanityValue", "sanityMax");
 
 // ======================================
 // NOTES AUTOSAVE
